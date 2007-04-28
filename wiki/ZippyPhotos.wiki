@@ -1,6 +1,6 @@
 = Introduction =
 
-Before creating Zippy Photos A lot of research was done and many many photo album systems were tried.  Gallery 2 is the only one that could do everything desired and it was still missing one key feature.  See the desired [[Requirements|Requirements]] for a Photo Album System.
+Before creating Zippy Photos A lot of research was done and many many photo album systems were tried.  Gallery 2 is the only one that could do everything desired and it was still missing one key feature.  See the desired http://code.google.com/p/zippyphotos/wiki/ZippyPhotos for a Photo Album System.
 
 = Details =
 

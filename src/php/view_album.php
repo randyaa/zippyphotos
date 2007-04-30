@@ -15,6 +15,10 @@ if (isset($_GET['album'])){
 $imagefolder=$imageroot.$albumfolder;
 $thumbsfolder=$thumbsroot.$albumfolder;
 
+if ($imagefolder == "" ) {
+	$imagefolder=".";
+}
+
 if ($albumfolder != "" ) {
 	echo " &gt; ";
 	displayHeirarchy($albumfolder);
@@ -32,13 +36,12 @@ displayThumbs($imagefolder, $thumbsfolder, $thumbsize, $imagesperrow, $rowsperpa
 
 displayPageLinks($imagefolder, $rowsperpage, $imagesperrow);
 
-echo "<br/><br/>";
 
+/*echo "<br/><br/>";
 echo "<a href='".currentScript()."'>home</a>";
-
 if ($albumfolder != "" ) {
 	echo " &gt; ";
 	displayHeirarchy($albumfolder);
-}
+}*/
 
 ?>

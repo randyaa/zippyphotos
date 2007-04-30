@@ -14,7 +14,10 @@ function displayDirectories($imagefolder, $currentalbum) {
 						$newalbum .= "/";
 					}
 					$newalbum .= $file;
-					echo "<a href='".currentScript()."?album=".$newalbum."'>".$file."</a><br/>";
+					
+					if (!isset($_SERVER['THUMB_ALBUM']) || $_SERVER['THUMB_ALBUM'] != $newalbum) {
+						echo "<a href='".currentScript()."?album=".$newalbum."'>".$file."</a><br/>";
+					}
 				}
 			}
 		}
@@ -167,7 +170,12 @@ function ditchtn($arr,$thumbname) {
  *            gets all files.
  */
 function directory($dir,$filters) {
-	$handle=opendir($dir);
+	if ($dir == "") {
+		$directory = "./";
+	} else {
+		$directory = $dir;
+	}
+	$handle=opendir($directory);
 	$files=array();
 
 	if ($filters == "all") {
@@ -182,7 +190,7 @@ function directory($dir,$filters) {
 			for ($f=0;$f<sizeof($filters);$f++):
 				$system=explode(".",$file);
 				if (!is_dir($dir."/".$system[0])) {
-					if ($system[1] == $filters[$f]) {
+					if (isset($system[1]) && $system[1] == $filters[$f]) {
 						$files[] = $file;
 					}
 				}

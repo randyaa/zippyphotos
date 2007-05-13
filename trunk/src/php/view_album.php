@@ -1,32 +1,24 @@
 <?php 
 
-
 include("settings.php");
 include("utilities.php");
 
-echo "<a href='".currentScript()."'>home</a>";
-
-if (isset($_GET['album'])){
-	$albumfolder = $_GET['album'];
-} else {
-	$albumfolder = "";
-}
-
-$imagefolder=$imageroot.$albumfolder;
-$thumbsfolder=$thumbsroot.$albumfolder;
+$imagefolder=$_SERVER['IMAGE_ROOT'].$_SERVER['ALBUM_FOLDER'];
+$thumbsfolder=$_SERVER['THUMB_ROOT'].$_SERVER['ALBUM_FOLDER'];
 
 if ($imagefolder == "" ) {
 	$imagefolder=".";
 }
 
-if ($albumfolder != "" ) {
+echo "<a href='".currentScript()."'>home</a>";
+if ($_SERVER['ALBUM_FOLDER'] != "" ) {
 	echo " &gt; ";
-	displayHeirarchy($albumfolder);
+	displayHeirarchy($_SERVER['ALBUM_FOLDER']);
 }
 
 echo "<br/><br/>";
 
-displayDirectories($imagefolder, $albumfolder);
+displayDirectories($imagefolder, $_SERVER['ALBUM_FOLDER']);
 
 echo "<br/>";
 

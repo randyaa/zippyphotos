@@ -16,10 +16,12 @@ $imagesperrow = 3;
 $rowsperpage = 3;
 
 /* the root location of the gallery.  The image folder and thumb folder will be below this gallery root */
-$_SERVER['GALLERY_ROOT'] = '';
+$_SERVER['GALLERY_ROOT'] = "";
+
+$_SERVER['IMAGE_ROOT'] = "";
 
 /* the location of all the images/albums.  This will be below the gallery root.
-$_SERVER['IMAGE_ROOT'] = '';
+$_SERVER['IMAGE_ROOT'] = "";
 
 /* the location in which to place the thumbnails.  this location will essentially mirror the structure of the album/photo root.*/
 $_SERVER['THUMB_ROOT'] = 'newthumbs/';

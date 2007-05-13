@@ -3,6 +3,8 @@
 /*
  */
 function displayDirectories($imagefolder, $currentalbum) {
+	$i = 0;
+	
 	if ($handle = opendir($imagefolder)) {
 		while (($file = readdir($handle)) !== false) {
 			/* if the file is a directory */
@@ -16,9 +18,23 @@ function displayDirectories($imagefolder, $currentalbum) {
 					$newalbum .= $file;
 					
 					if (!isset($_SERVER['THUMB_ALBUM']) || $_SERVER['THUMB_ALBUM'] != $newalbum) {
-						echo "<a href='".currentScript()."?album=".$newalbum."'>".$file."</a><br/>";
+						$albumarray[$i] = $newalbum;
+						$filearray[$i] = $file;
+						$i = $i + 1;
 					}
 				}
+			}
+		}
+		if (isset($filearray)) {
+			if ($_SERVER['NEW_ALBUM_LOCATION'] == "bottom") {
+				for ( $counter = 0; $counter < count($filearray); $counter += 1) {
+					echo "<a href='".currentScript()."?album=".$albumarray[$counter]."'>".$filearray[$counter]."</a><br/>";		
+				}
+			} else {
+				/* by default display the newest album at the top */
+				for ( $counter = count($filearray)-1; $counter >= 0; $counter -= 1) {
+					echo "<a href='".currentScript()."?album=".$albumarray[$counter]."'>".$filearray[$counter]."</a><br/>";		
+				}	
 			}
 		}
 	}

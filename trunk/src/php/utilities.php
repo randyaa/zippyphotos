@@ -1,5 +1,15 @@
 <?php 
 
+function addAlbumRecord($thumbnaildir) {
+	$albumname = substr($thumbnaildir, strlen($_SERVER['THUMB_ROOT']));  // abcdef
+	$link = currentURL()."/view_album.php?album=".$albumname;
+	$File = $_SERVER['RSS_FILE'];
+	$Handle = fopen($File, 'a');
+	$Data = "<album><name>".$albumname."</name><link>".$link."</link></album>\n";
+	fwrite($Handle, $Data); 
+	fclose($Handle); 
+}
+
 /*
  */
 function displayDirectories($imagefolder, $currentalbum) {
@@ -244,9 +254,23 @@ function currentURL() {
  * Recursively make all parent directories.
  */
 function MakeDirectory($dir, $mode) {
-  if (is_dir($dir) || @mkdir($dir,$mode)) return TRUE;
-  if (!MakeDirectory(dirname($dir),$mode)) return FALSE;
-  return @mkdir($dir,$mode);
+  	$madeit = @mkdir($dir, $mode);
+  	if (is_dir($dir) || $madeit){
+  		if ($madeit) {
+  			addAlbumRecord($dir);
+  		}
+  		return TRUE;
+  	}
+  	
+  	if (!MakeDirectory(dirname($dir),$mode)){
+  		return FALSE;
+  	}
+  	
+  	$newdir = @mkdir($dir,$mode);
+  	if ($newdir) {
+  		addAlbumRecord($dir);
+  	}
+  	return $newdir;
 }
 
 /*

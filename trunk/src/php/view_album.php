@@ -36,4 +36,5 @@ if ($albumfolder != "" ) {
 	displayHeirarchy($albumfolder);
 }*/
 
+echo "<div align='bottom'><a href='".currentURL()."/rss.php'><img border='0' src='rsslogo.gif'/></a><font size='2'>Album Feed</font></div>";
 ?>

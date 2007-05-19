@@ -10,7 +10,7 @@ if ($imagefolder == "" ) {
 	$imagefolder=".";
 }
 
-echo "<a href='".currentScript()."'>home</a>";
+echo "<a href='".currentScript()."'>Home</a>";
 if ($_SERVER['ALBUM_FOLDER'] != "" ) {
 	echo " &gt; ";
 	displayHeirarchy($_SERVER['ALBUM_FOLDER']);
@@ -30,7 +30,7 @@ displayPageLinks($imagefolder, $rowsperpage, $imagesperrow);
 
 
 /*echo "<br/><br/>";
-echo "<a href='".currentScript()."'>home</a>";
+echo "<a href='".currentScript()."'>Home</a>";
 if ($albumfolder != "" ) {
 	echo " &gt; ";
 	displayHeirarchy($albumfolder);

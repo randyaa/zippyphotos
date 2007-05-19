@@ -20,7 +20,7 @@ preg_match_all ("/<album>.*<name>(.*)<\/name>.*<link>(.*)<\/link>.*<\/album>/", 
 $reversedmatches = array_reverse($matches);
 
 foreach ($reversedmatches as $val) {
-	writeItem($val[1],$val[2],"from <a href='".currentURL()."'>".$_SERVER['HTTP_HOST']."</a>");	
+	writeItem($val[1],$val[2],"");	
 }
 
 echo "</channel>";

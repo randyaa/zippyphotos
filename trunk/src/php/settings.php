@@ -50,6 +50,7 @@ $_SERVER['NEW_ALBUM_LOCATION'] = 'top';
 $_SERVER['WEBSITE_TITLE'] = "Randy and Rachel's Photos";
 $_SERVER['WEBSITE_DESCRIPTION'] = "Randy and Rachel's Photos";
 $_SERVER['RSS_FILE'] = "RSS.txt";
+$_SERVER['MAX_FEED_ITEMS'] = 10;
 
 
 ?>

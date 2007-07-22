@@ -35,9 +35,10 @@ function displayDirectories($imagefolder, $currentalbum) {
 				}
 			}
 		}
-		sort($filearray);
-		sort($albumarray);
+		
 		if (isset($filearray)) {
+			sort($albumarray);
+			sort($filearray);
 			if ($_SERVER['NEW_ALBUM_LOCATION'] == "bottom") {
 				for ( $counter = 0; $counter < count($filearray); $counter += 1) {
 					echo "<a href='".currentScript()."?album=".$albumarray[$counter]."'>".$filearray[$counter]."</a><br/>";		

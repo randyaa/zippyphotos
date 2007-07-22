@@ -19,8 +19,14 @@ preg_match_all ("/<album>.*<name>(.*)<\/name>.*<link>(.*)<\/link>.*<\/album>/", 
 
 $reversedmatches = array_reverse($matches);
 
+$count = 0;
+
 foreach ($reversedmatches as $val) {
-	writeItem($val[1],$val[2],"");	
+	writeItem($val[1],$val[2],"");
+	$count = $count + 1;
+	if ($count >= $_SERVER['MAX_FEED_ITEMS']) {
+		break;
+	}
 }
 
 echo "</channel>";

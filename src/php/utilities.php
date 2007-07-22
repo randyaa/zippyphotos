@@ -35,6 +35,8 @@ function displayDirectories($imagefolder, $currentalbum) {
 				}
 			}
 		}
+		sort($filearray);
+		sort($albumarray);
 		if (isset($filearray)) {
 			if ($_SERVER['NEW_ALBUM_LOCATION'] == "bottom") {
 				for ( $counter = 0; $counter < count($filearray); $counter += 1) {
@@ -48,6 +50,10 @@ function displayDirectories($imagefolder, $currentalbum) {
 			}
 		}
 	}
+}
+
+function getFileName($path) {
+	
 }
 
 function currentScript() {
